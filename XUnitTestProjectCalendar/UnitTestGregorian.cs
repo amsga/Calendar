@@ -2,12 +2,13 @@ using System;
 using System.Threading.Tasks;
 using TensionDev.Calendar;
 using Xunit;
-using static TensionDev.Calendar.Gregorian;
 
 namespace XUnitTestProjectCalendar
 {
-    public class UnitTestGregorian
+    public class UnitTestGregorian : IDisposable
     {
+        private bool disposedValue;
+
         [Fact]
         public void TestFirstDayOfTheMonth()
         {
@@ -69,7 +70,7 @@ namespace XUnitTestProjectCalendar
                 { 25, 26, 27, 28, 29, 30, 31 },
             };
 
-            Parallel.ForEach(Enum.GetValues<WeekOfTheMonth>(),
+            Parallel.ForEach(Enum.GetValues<Gregorian.WeekOfTheMonth>(),
                 weekOfTheMonth =>
                 {
                     Parallel.ForEach(Enum.GetValues<DayOfWeek>(),
@@ -99,7 +100,7 @@ namespace XUnitTestProjectCalendar
                 { 22, 23, 24, 25, 26, 27, 28 },
             };
 
-            Parallel.ForEach(Enum.GetValues<WeekOfTheMonth>(),
+            Parallel.ForEach(Enum.GetValues<Gregorian.WeekOfTheMonth>(),
                 weekOfTheMonth =>
                 {
                     Parallel.ForEach(Enum.GetValues<DayOfWeek>(),
@@ -130,7 +131,7 @@ namespace XUnitTestProjectCalendar
                 { 27, 28, 29, 30, 31, 25, 26 },
             };
 
-            Parallel.ForEach(Enum.GetValues<WeekOfTheMonth>(),
+            Parallel.ForEach(Enum.GetValues<Gregorian.WeekOfTheMonth>(),
                 weekOfTheMonth =>
                 {
                     Parallel.ForEach(Enum.GetValues<DayOfWeek>(),
@@ -161,7 +162,7 @@ namespace XUnitTestProjectCalendar
                 { 29, 30, 24, 25, 26, 27, 28 },
             };
 
-            Parallel.ForEach(Enum.GetValues<WeekOfTheMonth>(),
+            Parallel.ForEach(Enum.GetValues<Gregorian.WeekOfTheMonth>(),
                 weekOfTheMonth =>
                 {
                     Parallel.ForEach(Enum.GetValues<DayOfWeek>(),
@@ -191,7 +192,7 @@ namespace XUnitTestProjectCalendar
                 { 25, 26, 27, 28, 29, 30, 31 },
             };
 
-            Parallel.ForEach(Enum.GetValues<WeekOfTheMonth>(),
+            Parallel.ForEach(Enum.GetValues<Gregorian.WeekOfTheMonth>(),
                 weekOfTheMonth =>
                 {
                     Parallel.ForEach(Enum.GetValues<DayOfWeek>(),
@@ -221,7 +222,7 @@ namespace XUnitTestProjectCalendar
                 { 22, 23, 24, 25, 26, 27, 28 },
             };
 
-            Parallel.ForEach(Enum.GetValues<WeekOfTheMonth>(),
+            Parallel.ForEach(Enum.GetValues<Gregorian.WeekOfTheMonth>(),
                 weekOfTheMonth =>
                 {
                     Parallel.ForEach(Enum.GetValues<DayOfWeek>(),
@@ -252,7 +253,7 @@ namespace XUnitTestProjectCalendar
                 { 27, 28, 29, 30, 31, 25, 26 },
             };
 
-            Parallel.ForEach(Enum.GetValues<WeekOfTheMonth>(),
+            Parallel.ForEach(Enum.GetValues<Gregorian.WeekOfTheMonth>(),
                 weekOfTheMonth =>
                 {
                     Parallel.ForEach(Enum.GetValues<DayOfWeek>(),
@@ -283,7 +284,7 @@ namespace XUnitTestProjectCalendar
                 { 29, 30, 24, 25, 26, 27, 28 },
             };
 
-            Parallel.ForEach(Enum.GetValues<WeekOfTheMonth>(),
+            Parallel.ForEach(Enum.GetValues<Gregorian.WeekOfTheMonth>(),
                 weekOfTheMonth =>
                 {
                     Parallel.ForEach(Enum.GetValues<DayOfWeek>(),
@@ -296,6 +297,35 @@ namespace XUnitTestProjectCalendar
                             Assert.Equal(expected, actual);
                         });
                 });
+        }
+
+        protected virtual void Dispose(bool disposing)
+        {
+            if (!disposedValue)
+            {
+                if (disposing)
+                {
+                    // TODO: dispose managed state (managed objects)
+                }
+
+                // TODO: free unmanaged resources (unmanaged objects) and override finalizer
+                // TODO: set large fields to null
+                disposedValue = true;
+            }
+        }
+
+        // // TODO: override finalizer only if 'Dispose(bool disposing)' has code to free unmanaged resources
+        // ~UnitTestGregorian()
+        // {
+        //     // Do not change this code. Put cleanup code in 'Dispose(bool disposing)' method
+        //     Dispose(disposing: false);
+        // }
+
+        public void Dispose()
+        {
+            // Do not change this code. Put cleanup code in 'Dispose(bool disposing)' method
+            Dispose(disposing: true);
+            GC.SuppressFinalize(this);
         }
     }
 }
